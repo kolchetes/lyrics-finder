@@ -1,0 +1,31 @@
+<%- include("partials/header.ejs") %>
+<main>
+    <form class="searchDiv" action="/search" method="POST">
+        <label for="artist">Artist Name:</label>
+        <input type="text" name="artist" id="artist" placeholder="Lana Del Rey" required>
+        <label for="songName">Song Name:</label>
+        <input type="text" name="song" id="songName"  placeholder="Radio" required>
+        <input class="searchButton" type="submit" value="Search">
+    </form>
+
+    <div class="lyricsDiv">
+        <% if (locals.lyrics) { %>
+
+        <h2 class="songText"><%= song %></h2>
+        <p class="artistText"><%= artist %></p>
+
+        <pre class="lyrics">
+            <%=lyrics%>  
+        </pre>
+
+        <% } %>
+
+        <% if (locals.error) { %>
+            <h2 class="errorMessage">
+                <%= error %>
+            </h2>
+            <% } %>
+    </div>
+</main>
+<%- include("partials/footer.ejs") %>
+    
